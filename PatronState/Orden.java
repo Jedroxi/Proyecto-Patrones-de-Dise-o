@@ -3,7 +3,7 @@ public class Orden {
     pivate State state;
 
     public Orden () {
-        this.setState (new StateA();)
+        this.setState (new Registrado();)
     }
 
     protected void setState (State state){
