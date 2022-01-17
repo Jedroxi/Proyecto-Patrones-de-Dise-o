@@ -1,1 +1,1 @@
-# Proyecto-Patrones-de-Dise-o
+# Proyecto Patrones de Diseño
