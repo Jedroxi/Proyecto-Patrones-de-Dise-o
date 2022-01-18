@@ -1,7 +1,5 @@
 package proyecto;
 
-import org.sonatype.inject.Mediator;
-
 import io.javalin.Javalin;
 import io.javalin.plugin.openapi.OpenApiOptions;
 import io.javalin.plugin.openapi.OpenApiPlugin;
@@ -59,14 +57,15 @@ public class Main {
         server.post("api/order/aprobar",this.orderController::proxAprobador);
         server.get("api/orderbyuser",this.orderController::findOrdersByUser);
 
-        server.post("api/plan", this.mercadoPagoController::create);
-        server.post("api/plan/update", this.mercadoPagoController::updateSandboxPoints);
-        server.get("api/plan/:id", this.mercadoPagoController::find);
+        server.post("api/item", this.mercadoPagoController::create);
+        server.post("api/item/update", this.mercadoPagoController::updateSandboxPoints);
+        server.get("api/item/:id", this.mercadoPagoController::find);
 
         server.post("api/user", this.usuarioController::create);
         server.get("api/user/:id", this.usuarioController::find);
         server.put("api/user/:id",this.usuarioController::update);
         server.get("api/userlogin",this.usuarioController::login);
+        server.get("api/users",this.usuarioController::findAll);
 
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             server.stop();

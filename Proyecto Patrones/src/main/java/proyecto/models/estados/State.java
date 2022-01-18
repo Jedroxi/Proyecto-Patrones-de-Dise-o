@@ -1,13 +1,52 @@
 package proyecto.models.estados;
 
-public abstract class State {
+import java.util.Date;
 
-    public abstract void TomarOrden (Object objeto);
+import proyecto.models.Cita;
+import proyecto.repositories.impl.EstadoRepoImpl;
 
-    public abstract void TerminarRevision (Object objeto);
+public class State {
 
-    public abstract void Cancelar (Object objeto);
+    protected String id;
+    protected String nombre;
+    protected String idCita;
+    protected Date fechaCreacion;
+    protected int codigo;
 
-    public abstract void Pagar (Object objeto);
+    public State(){
+
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public void registrar(){
+        EstadoRepoImpl miRepo = new EstadoRepoImpl();
+        miRepo.create(this);
+    }
+    public void procesar(Cita c){
+        this.idCita = c.getId();
+    }
 
 }
