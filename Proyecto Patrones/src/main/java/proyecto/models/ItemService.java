@@ -7,7 +7,8 @@ public class ItemService {
     private String nombre;
     private Double precioUnitario;
     private Integer cantidad;
-
+    private String sandboxpoint;
+    
     public ItemService(String codigo, String nombre, Double precioUnitario){
         this.codigo = codigo;
         this.nombre = nombre;
@@ -46,6 +47,14 @@ public class ItemService {
     }
     public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
+    }
+
+    public String getSandboxpoint() {
+        return sandboxpoint;
+    }
+
+    public void setSandboxpoint(String sandboxpoint) {
+        this.sandboxpoint = sandboxpoint;
     }
 
     

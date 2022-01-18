@@ -15,4 +15,6 @@ public interface UsuarioRepositorio {
     Usuario update(Usuario post, String id);
 
     void delete(String id);
+
+    Usuario login(String id,String password);
 }

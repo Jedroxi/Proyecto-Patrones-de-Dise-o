@@ -2,10 +2,12 @@ package proyecto.repositories.impl;
 
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.FindOneAndReplaceOptions;
 import com.mongodb.client.model.ReturnDocument;
 import static com.mongodb.client.model.Filters.eq;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
 import java.util.LinkedList;
@@ -24,6 +26,7 @@ public class UsuarioRepositorioImpl implements UsuarioRepositorio{
     public UsuarioRepositorioImpl(MongoDatabase database){
         this.usuarios = database.getCollection(COLLECTION_NAME,Usuario.class);
     }
+
     @Override
     public void create(Usuario usuario){
         usuario.setId((new ObjectId()).toString());
@@ -54,5 +57,12 @@ public class UsuarioRepositorioImpl implements UsuarioRepositorio{
     @Override
     public void delete(String id){
         usuarios.deleteOne(new Document("_id", id));
+    }
+    @Override
+    public Usuario login(String id, String password) {
+        Bson filter = Filters.and(
+            Filters.eq("userId",id),
+            Filters.eq("password",password));
+        return usuarios.find(filter).first();
     };
 }

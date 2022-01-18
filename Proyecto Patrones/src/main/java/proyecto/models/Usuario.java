@@ -5,6 +5,7 @@ public class Usuario {
     protected String dni;
     protected String userId;
     protected String password;
+    protected String nombre;
     protected String rol;
     protected String supervisorId;
 
@@ -62,5 +63,15 @@ public class Usuario {
     public void setSupervisorId(String supervisorId) {
         this.supervisorId = supervisorId;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    
     
 }

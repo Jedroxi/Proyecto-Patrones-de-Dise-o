@@ -1,9 +1,8 @@
 package proyecto.controllers;
-
 import io.javalin.http.Context;
 import org.jetbrains.annotations.NotNull;
 
-public interface UsuarioController {
+public interface ItemController {
     void create(@NotNull Context context);
 
     void find(@NotNull Context context);
@@ -13,6 +12,4 @@ public interface UsuarioController {
     void update(@NotNull Context context);
 
     void delete(@NotNull Context context);
-    
-    void login(@NotNull Context context);
 }

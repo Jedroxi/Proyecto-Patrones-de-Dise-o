@@ -8,12 +8,12 @@ import io.javalin.plugin.openapi.OpenApiPlugin;
 import io.javalin.plugin.openapi.ui.SwaggerOptions;
 import io.swagger.v3.oas.models.info.Info;
 import proyecto.config.DBConnectionManager;
-import proyecto.controllers.impl.PlanControllerImpl;
+import proyecto.controllers.impl.ItemControllerImpl;
 import proyecto.controllers.impl.OrderControllerImpl;
 import proyecto.controllers.impl.UsuarioControllerImpl;
 import proyecto.integrations.MercadoPagoImpl;
 import proyecto.models.MercadoPagoMediator;
-import proyecto.repositories.impl.PlanRepoImpl;
+import proyecto.repositories.impl.ItemRepoImpl;
 import proyecto.repositories.impl.PedidoRepositorioImpl;
 import proyecto.repositories.impl.UsuarioRepositorioImpl;
 
@@ -23,15 +23,15 @@ public class Main {
     private final OrderControllerImpl orderController;
     /*private final CustomerControllerImpl customerController;
     private final ProductControllerImpl productController;*/
-    private final PlanControllerImpl mercadoPagoController;
+    private final ItemControllerImpl mercadoPagoController;
     private final UsuarioControllerImpl usuarioController;
 
     public Main() {
         this.manager = new DBConnectionManager();
 
-        PlanRepoImpl miMPRep = new PlanRepoImpl(this.manager.getDatabase());
+        ItemRepoImpl miMPRep = new ItemRepoImpl(this.manager.getDatabase());
         MercadoPagoMediator miMediator = new MercadoPagoMediator(MercadoPagoImpl.getInstance());
-        this.mercadoPagoController = new PlanControllerImpl(miMPRep,miMediator);
+        this.mercadoPagoController = new ItemControllerImpl(miMPRep,miMediator);
 
         PedidoRepositorioImpl pedidoRepImpl = new PedidoRepositorioImpl(this.manager.getDatabase());
         this.orderController = new OrderControllerImpl(pedidoRepImpl);
@@ -66,6 +66,7 @@ public class Main {
         server.post("api/user", this.usuarioController::create);
         server.get("api/user/:id", this.usuarioController::find);
         server.put("api/user/:id",this.usuarioController::update);
+        server.get("api/userlogin",this.usuarioController::login);
 
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             server.stop();

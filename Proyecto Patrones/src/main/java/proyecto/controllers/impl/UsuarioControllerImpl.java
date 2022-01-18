@@ -22,6 +22,7 @@ public class UsuarioControllerImpl implements UsuarioController{
         /*String sbBasic = "https://sandbox.mercadopago.com.pe/checkout/v1/redirect?pref_id=388838619-7bc0e5fd-ce0b-4e20-a453-8d114605a5d7";
         Plan planBasico = new Plan("BASICO",120.0,sbBasic);*/
         repo.create(usuario);
+        context.json(usuario);
     }
 
     @Override
@@ -64,6 +65,17 @@ public class UsuarioControllerImpl implements UsuarioController{
 
     
     public void updateSandboxPoints(Context context) {
+        
+    }
+
+    @Override
+    public void login(Context context) {
+        Usuario usuario = repo.login(context.formParam("id"),context.formParam("pass"));
+        if(usuario==null){
+            throw new NotFoundResponse("No se encontró al usuario");
+        }else{
+            context.json(usuario);
+        }
         
     }
 
