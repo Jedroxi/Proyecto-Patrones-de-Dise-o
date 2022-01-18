@@ -1,0 +1,12 @@
+1. Implemente un nuevo comando para Suspender a los clientes dentro de la empresa.
+2. Adicione un nuevo participante para el flujo de aprobación de pedidos. El nuevo aprobador será el
+ente regulador SUNAT, quien deberá validar si todos los datos son correctos del pedido, antes de
+continuar con el flujo.
+3. Implemente un nuevo Memento para guardar el historial de los datos básicos del Cliente. Demuestre
+su uso actualizando el correo electrónico y el teléfono.
+4. Desarrolle un nuevo flujo de evaluación crediticia para Clientes que hayan superado pedidos de
+montos mayores a 1000. La aprobación inicial está relacionado a los campos mínimos obligatorios.
+De pasar la primera validación de datos, tocará que se evalué su historial de pedidos, si todos fueron
+pagados a tiempo y sin rechazos. Finalmente, la última evaluación depende del área de Evaluación
+Crediticia que dé su visto.
+5. Desarrolle una interfaz gráfica para el ingreso de los comandos construidos para los clientes.
