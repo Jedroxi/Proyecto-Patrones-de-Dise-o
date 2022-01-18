@@ -64,7 +64,7 @@ public class Main {
         server.post("api/user", this.usuarioController::create);
         server.get("api/user/:id", this.usuarioController::find);
         server.put("api/user/:id",this.usuarioController::update);
-        server.get("api/userlogin",this.usuarioController::login);
+        server.post("api/userlogin",this.usuarioController::login);
         server.get("api/users",this.usuarioController::findAll);
 
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
